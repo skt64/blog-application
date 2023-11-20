@@ -1,12 +1,13 @@
 // let ui = new firebaseui.auth.AuthUI(auth);
+
 let ui = new firebaseui.auth.AuthUI(auth);
 let login = document.querySelector('.login');
-const blogSection = document.querySelector('.blog-section')
+const blogSection = document.querySelector('.blogs-section');
 
-auth.onAuthStateChange((user) => {
+auth.onAuthStateChanged((user) => {
     if(user){
         login.style.display = "none";
-
+        getUserWrittenBlogs();
     } else {
         setupLoginButton();
     }
@@ -26,12 +27,11 @@ const setupLoginButton = () => {
 }
 
 // fetch user writting blogs
-
 const getUserWrittenBlogs = () => {
-    db.collection("blogs").where("author", "==", auth.currentUser.email.split('@') [0])
+    db.collection("blogs").where("author", "==", auth.currentUser.email.split('@')[0])
     .get()
     .then((blogs) => {
-        blogs.array.forEach((blogs) => {
+        blogs.forEach((blog) => {
             createBlog(blog);            
         });
     })
@@ -41,12 +41,13 @@ const getUserWrittenBlogs = () => {
 }
 
 const createBlog = (blog) => {
+    console.log(blog);
     let data = blog.data();
     blogSection.innerHTML += `
     <div class="blog-card">
-         <div class="blog-card-box">
-            <img src="${data.bannerImage}" class="blog-image" alt="">
-         </div>
+        <div class="blog-card-box">
+        <img src="${data.bannerImage}" class="blog-image" alt="">
+        </div>
         
         <h1 class="blog-title">${data.title.substring(0, 100) + '...'}</h1>
         <p class="blog-overview">${data.article.substring(0, 200) + '...'}</p>

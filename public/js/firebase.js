@@ -1,4 +1,8 @@
-const firebaseConfig = {
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
+// import 'firebase/auth';
+
+var firebaseConfig = {
     apiKey: "AIzaSyCQmC6MIvfkjbTVbYrcJTZFuW8PtdFaDoo",
     authDomain: "blogging-website-e53da.firebaseapp.com",
     projectId: "blogging-website-e53da",

@@ -1,6 +1,6 @@
 const blogTitleField = document.querySelector('.title');
 const articleFeild = document.querySelector('.article');
-let db = firebase.firestore();
+// let db = firebase.firestore();
 console.log(db);
 // banner
 const bannerImage = document.querySelector('#banner-upload');
