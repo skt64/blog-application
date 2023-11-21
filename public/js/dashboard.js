@@ -1,5 +1,3 @@
-// let ui = new firebaseui.auth.AuthUI(auth);
-
 let ui = new firebaseui.auth.AuthUI(auth);
 let login = document.querySelector('.login');
 const blogSection = document.querySelector('.blogs-section');
