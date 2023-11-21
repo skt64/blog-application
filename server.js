@@ -18,13 +18,17 @@ app.get('/editor', (req, res) => {
 
 // upload link
 app.post('/upload', (req, res) => {
-    let file = req.files.image;
-    let date = new Date();
-    // image name
-    let imagename = date.getDate() + date.getTime() + file.name;
-    // image upload path
-    let path = 'public/' + imagename;
-    res.json(path)
+    try{
+        let file = req.files.image;
+        let date = new Date();
+        // image name
+        let imagename = date.getDate() + date.getTime() + file.name;
+        // image upload path
+        let path = '/' + imagename;
+        res.json(path)
+    }catch(err){
+        console.error(err);
+    }
 
     // create upload
     // file.mv(path, (err, result) => {
