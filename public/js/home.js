@@ -1,3 +1,4 @@
+
 const blogSection = document.querySelector('.blogs-section');
 // let db = firebase.firestore();
 db.collection("blogs").get().then((blogs) => {
