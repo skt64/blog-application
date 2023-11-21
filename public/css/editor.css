@@ -2,6 +2,7 @@
     width: 100%;
     height: 400px;
     position: relative;
+    background-image: url("http://localhost:3000/1700554571826Screenshot (160).png");
     background: #e7e7e7;
     background-size: cover;
     background-position: center;
@@ -9,12 +10,13 @@
 
 .banner-upload-btn{
     position: absolute;
+    z-index: 10;
     bottom: 20px;
     right: 20px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 254);
     display: flex;
     justify-content: center;
     align-items: center;

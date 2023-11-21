@@ -1,7 +1,7 @@
 const blogTitleField = document.querySelector('.title');
 const articleFeild = document.querySelector('.article');
 // let db = firebase.firestore();
-console.log(db);
+
 // banner
 const bannerImage = document.querySelector('#banner-upload');
 const banner = document.querySelector(".banner");
@@ -27,12 +27,17 @@ const uploadImage = (uploadFile, uploadType) => {
         fetch('/upload', {
             method: 'post',
             body: formdata
-        }).then(res => res.json())
-        .then(data => {
+        }).then(res => {
+            console.log(res);
+            return res.json()
+        }).then(data => {
+            // Change the file path from 'uploads/' to 'public/'
+            let publicPath = data.replace('uploads/', '');
+            console.log(publicPath);
             if(uploadType == "image"){
-                addImage(data, file.name);
+                addImage(publicPath, file.name);
             } else{
-                bannerPath = `${location.origin}/${data}`;
+                bannerPath = `${location.origin}/${publicPath}`;
                 banner.style.backgroundImage = `url("${bannerPath}")`;
             }
         })
@@ -105,7 +110,7 @@ if(blogID[0] != "editor"){
         if (doc.exists){
             let data = doc.data();
             bannerPath = data.bannerImage;
-            banner.style.backgroundImage = `url(${bannerPath})`;
+            banner.style.backgroundImage = `url(${data.bannerImage})`;
             blogTitleField.value = data.title;
             articleFeild.value = data.article;
         }else {
