@@ -24,7 +24,7 @@ app.post('/upload', (req, res) => {
         // image name
         let imagename = date.getDate() + date.getTime() + file.name;
         // image upload path
-        let path = '/' + imagename;
+        let path = '' + imagename;
         res.json(path)
     }catch(err){
         console.error(err);
